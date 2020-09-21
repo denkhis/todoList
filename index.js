@@ -1,4 +1,5 @@
 const todoArray = [];
+
 window.onload = function() {
   if(localStorage.getItem('todo')) {
     JSON.parse(localStorage.getItem('todo')).forEach((todo) => {
@@ -9,35 +10,11 @@ window.onload = function() {
   createInput.focus();
 }
 
-const body = document.querySelector('body');
-const container = document.createElement('div');
-const todoList = document.createElement('div');
-const header = document.createElement('h1');
-const createBlock = document.createElement('div');
-const createInput = document.createElement('input');
-const addButton = document.createElement('button');
-const todoListBlock = document.createElement('div');
-const todoListUl = document.createElement('ul');
-
-container.classList.add('container');
-todoList.classList.add('todo-list');
-header.classList.add('todo-list__header');
-createBlock.classList.add('todo-list__create-block');
-createInput.classList.add('input', 'create-input');
-addButton.classList.add('button', 'add-button');
-todoListBlock.classList.add('todo-list__block');
-todoListUl.classList.add('todo-list__ui');
-header.innerText = 'My Todo List';
-addButton.innerText = 'Add';
-
+const createInput = document.querySelector('.create-input');
+const addButton = document.querySelector('.add-button');
+const todoListUl = document.querySelector('.todo-list__ui');
 createInput.addEventListener('change', addTodo);
 addButton.addEventListener('click', addTodo);
-
-body.append(container);
-container.append(todoList);
-createBlock.append(createInput, addButton);
-todoList.append(header, createBlock, todoListBlock);
-todoListBlock.append(todoListUl);
 
 function displayTodo(todo) {
   const todoListItem = document.createElement('li');
